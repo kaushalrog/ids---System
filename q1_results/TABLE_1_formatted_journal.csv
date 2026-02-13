@@ -1,0 +1,4 @@
+Method,Threshold,Accuracy,Precision,Detection Rate (Recall),FPR,F1-Score,ROC-AUC
+Static Threshold (1.5),1.5,100.0%,100.0%,100.0%,0.0%,1.0,1.0
+Static Threshold (0.45),0.45,26.09%,25.3%,100.0%,98.6%,0.4038,1.0
+Isolation Forest,adaptive,78.13%,65.83%,26.29%,4.56%,0.3758,0.105

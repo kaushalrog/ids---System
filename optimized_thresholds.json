@@ -1,0 +1,43 @@
+{
+  "f1_optimized": {
+    "threshold": 0.45,
+    "Accuracy": 1.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "Balanced_Accuracy": 1.0
+  },
+  "youden_optimized": {
+    "threshold": 0.45013254779668205,
+    "Accuracy": 1.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "Balanced_Accuracy": 1.0
+  },
+  "balanced_accuracy": {
+    "threshold": 0.45,
+    "Accuracy": 1.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "Balanced_Accuracy": 1.0
+  },
+  "cost_sensitive": {
+    "threshold": 0.45,
+    "Accuracy": 1.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "Balanced_Accuracy": 1.0
+  },
+  "roc_optimal": {
+    "threshold": 0.45013254779668205,
+    "Accuracy": 1.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "Balanced_Accuracy": 1.0
+  },
+  "ensemble_recommendation": 0.45004418259889406
+}

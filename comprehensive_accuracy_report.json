@@ -1,0 +1,42 @@
+{
+  "statistical_analysis": {
+    "Normal_Mean": 1.1487444291016629,
+    "Normal_Std": 0.30875968569056816,
+    "Anomaly_Mean": 2.296175568253316,
+    "Anomaly_Std": 0.355803900152126,
+    "Mean_Separation": 1.147431139151653,
+    "Cohen_D": 3.444567039682891,
+    "T_Test_P_Value": 0.0,
+    "T_Stat": -196.57798761489548,
+    "KS_Statistic": 1.0,
+    "KS_P_Value": 0.0
+  },
+  "anomaly_patterns": {
+    "High_Drift_Samples": 108,
+    "Alert_Bursts": 2286,
+    "Drift_Trend_Slope": 6.269144121496317e-06,
+    "Attack_By_Endpoint": {
+      "/api/data": 0.09936645548516172,
+      "/login": 0.996993987975952
+    }
+  },
+  "detection_efficiency": {
+    "Time_To_Detection_Samples": 0,
+    "Alert_Purity": 0.5401214833759591,
+    "Attack_Coverage": 1.0,
+    "False_Alarm_Rate": 0.11512605042016806
+  },
+  "model_robustness": {
+    "Q1_Precision": 0.5720053835800808,
+    "Q1_Recall": 1.0,
+    "Q2_Precision": 0.5154211150652431,
+    "Q2_Recall": 1.0,
+    "Q3_Precision": 0.512636899747262,
+    "Q3_Recall": 1.0,
+    "Q4_Precision": 0.5973847212663455,
+    "Q4_Recall": 1.0,
+    "Precision_Variance": 0.0013299053091260656,
+    "Recall_Variance": 0.0,
+    "Consistency_Score": 0.999335047345437
+  }
+}

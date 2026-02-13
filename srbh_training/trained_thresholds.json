@@ -1,0 +1,17 @@
+{
+  "warning": 0.35946820432730714,
+  "alert": 0.4493352554091339,
+  "detection_rate": 0.16773523567962184,
+  "false_positive_rate": 0.0119634060478665,
+  "used_features": [
+    "has_sql_kw",
+    "has_cmd_kw",
+    "has_traversal",
+    "req_len",
+    "body_len",
+    "cookie_len",
+    "ua_len",
+    "combo_attack"
+  ],
+  "mode": "balanced_srbh20"
+}
