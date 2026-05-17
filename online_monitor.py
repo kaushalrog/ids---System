@@ -94,43 +94,57 @@ class OnlineMonitor:
 
     def _log_drift(self, sample, drift_score, components, alert_level):
         try:
+            # Validate components before logging
+            if "error" in components:
+                return  # Skip logging for invalid samples
+                
             with open(self.drift_log, "a", newline="") as f:
                 writer = csv.writer(f)
                 writer.writerow([
                     sample.get("timestamp", datetime.utcnow().isoformat()),
                     sample.get("endpoint", "unknown"),
                     f"{drift_score:.4f}",
-                    f"{components['delta']:.4f}",
-                    f"{components['acceleration']:.4f}",
-                    f"{components['prediction_error']:.4f}",
+                    f"{components.get('delta', 0):.4f}",
+                    f"{components.get('acceleration', 0):.4f}",
+                    f"{components.get('prediction_error', 0):.4f}",
                     alert_level
                 ])
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Warning: Failed to log drift: {e}")
 
     def _check_cooldown(self):
         return (time.time() - self.last_alert_time) < self.cooldown_seconds
 
     def _process_sample(self, sample):
-        self.sample_count += 1
+        try:
+            if not sample or not isinstance(sample, dict):
+                return
+                
+            self.sample_count += 1
 
-        drift_score, components = self.detector.compute_drift_score(sample)
+            drift_score, components = self.detector.compute_drift_score(sample)
 
-        alert_level = "NORMAL"
-        if drift_score >= self.alert_threshold:
-            alert_level = "ALERT"
-        elif drift_score >= self.warning_threshold:
-            alert_level = "WARNING"
+            # Skip logging for invalid samples
+            if "error" in components:
+                return
 
-        self._log_drift(sample, drift_score, components, alert_level)
+            alert_level = "NORMAL"
+            if drift_score >= self.alert_threshold:
+                alert_level = "ALERT"
+            elif drift_score >= self.warning_threshold:
+                alert_level = "WARNING"
 
-        if alert_level in ["WARNING", "ALERT"]:
-            if not self._check_cooldown():
-                self._emit_alert(sample, drift_score, components, alert_level)
+            self._log_drift(sample, drift_score, components, alert_level)
 
-                if alert_level == "ALERT":
-                    self.detector.reset_history()
-                    self.last_alert_time = time.time()
+            if alert_level in ["WARNING", "ALERT"]:
+                if not self._check_cooldown():
+                    self._emit_alert(sample, drift_score, components, alert_level)
+
+                    if alert_level == "ALERT":
+                        self.detector.reset_history()
+                        self.last_alert_time = time.time()
+        except Exception as e:
+            print(f"Warning: Error processing sample: {e}")
 
     def _emit_alert(self, sample, drift_score, components, alert_level):
         timestamp = sample.get("timestamp", "unknown")
@@ -142,14 +156,18 @@ class OnlineMonitor:
         print(f"Timestamp: {timestamp}")
         print(f"Endpoint: {endpoint}")
         print(f"Drift Score: {drift_score:.4f}")
-        print(f"  - Delta: {components['delta']:.4f}")
-        print(f"  - Acceleration: {components['acceleration']:.4f}")
-        print(f"  - Prediction Error: {components['prediction_error']:.4f}")
+        print(f"  - Delta: {components.get('delta', 'N/A'):.4f}" if 'delta' in components else f"  - Delta: N/A")
+        print(f"  - Acceleration: {components.get('acceleration', 'N/A'):.4f}" if 'acceleration' in components else f"  - Acceleration: N/A")
+        print(f"  - Prediction Error: {components.get('prediction_error', 'N/A'):.4f}" if 'prediction_error' in components else f"  - Prediction Error: N/A")
 
-        contributions = self.detector.get_feature_contributions(sample)
-        print("\nTop Feature Contributions:")
-        for i, (feature, contrib) in enumerate(list(contributions.items())[:5]):
-            print(f"  {i+1}. {feature}: {contrib:.4f}")
+        try:
+            contributions = self.detector.get_feature_contributions(sample)
+            if contributions:
+                print("\nTop Feature Contributions:")
+                for i, (feature, contrib) in enumerate(list(contributions.items())[:5]):
+                    print(f"  {i+1}. {feature}: {contrib:.4f}")
+        except Exception as e:
+            print(f"\nNote: Could not calculate feature contributions: {e}")
 
         print("=" * 60 + "\n")
 
