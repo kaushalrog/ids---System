@@ -85,8 +85,9 @@ class AdvancedThresholdOptimizer:
         
         return best_threshold, best_acc
     
-    def optimize_cost_sensitive(self, fn_cost=2.0, fp_cost=1.0):
-        """Minimize cost: fn_cost * FN + fp_cost * FP"""
+    def optimize_cost_sensitive(self, fn_cost=1.5, fp_cost=1.5):
+        """Minimize cost: fn_cost * FN + fp_cost * FP
+        Balanced costs to reduce both false positives and false negatives"""
         y_true = self.df["Actual"].values
         y_proba = self.df["pred_proba"].values
         
@@ -180,9 +181,9 @@ class AdvancedThresholdOptimizer:
         print(f"  Balanced Accuracy: {ba_val:.4f}")
         print(f"  Metrics: {self.get_metrics_at_threshold(ba_threshold)}")
         
-        # Strategy 4: Cost Sensitive
-        cost_threshold, cost_val = self.optimize_cost_sensitive(fn_cost=2.0, fp_cost=1.0)
-        print(f"\n[Strategy 4] Cost-Sensitive Learning (FN_cost=2, FP_cost=1)")
+        # Strategy 4: Cost Sensitive (Balanced to reduce false positives)
+        cost_threshold, cost_val = self.optimize_cost_sensitive(fn_cost=1.5, fp_cost=1.5)
+        print(f"\n[Strategy 4] Cost-Sensitive Learning (Balanced: FN_cost=1.5, FP_cost=1.5)")
         print(f"  Optimal Threshold: {cost_threshold:.4f}")
         print(f"  Total Cost: {cost_val:.4f}")
         print(f"  Metrics: {self.get_metrics_at_threshold(cost_threshold)}")
