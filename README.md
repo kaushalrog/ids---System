@@ -167,7 +167,7 @@ ids---System/
 
 <br/>
 
-## 🚀 Getting Started
+##  Getting Started
 
 > **Requirements:** Python 3.10+ · Ubuntu 22.04+ or Raspberry Pi 5 · sudo access for OS telemetry
 
@@ -218,7 +218,7 @@ python run_workflow.py
 
 <br/>
 
-## 🎛 Production Threshold Config
+##  Production Threshold Config
 
 ```python
 # online_monitor.py
@@ -236,7 +236,7 @@ THRESHOLDS = {
 
 <br/>
 
-## 🔍 Attack Breakdown
+##  Attack Breakdown
 
 Nearly all attacks target a single endpoint:
 
