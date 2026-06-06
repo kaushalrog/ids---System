@@ -123,7 +123,7 @@ Incoming Traffic
       ├──  score < 0.40   ──►  ✅  NORMAL
       ├──  score 0.40–0.45 ──►  ⚠️  WARNING    investigate
       ├──  score ≥ 0.45   ──►  🚨  ALERT      block / log
-      └──  score ≥ 0.60   ──►  🔴  CRITICAL   immediate response
+      └──  score ≥ 0.60   ──►  ❌ CRITICAL   immediate response
 ```
 
 Five independent optimization strategies — F1, Youden Index, Balanced Accuracy, Cost-Sensitive, and ROC Optimal — **all converged on a threshold of 0.45**. This is the recommended production value.
