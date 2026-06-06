@@ -32,7 +32,7 @@
 
 <div align="center">
 
-## 🧬 A Different Kind of IDS
+##  A Different Kind of IDS
 
 </div>
 
@@ -52,7 +52,7 @@ This project monitors those OS-level telemetry signals in real time, computes a 
 
 <div align="center">
 
-## 📊 Results
+##  Results
 
 **24,990 records · 3 independent analyzers · January 2026**
 
@@ -106,7 +106,7 @@ This project monitors those OS-level telemetry signals in real time, computes a 
 
 <br/>
 
-## ⚙️ Detection Pipeline
+##  Detection Pipeline
 
 ```
 Incoming Traffic
@@ -134,7 +134,7 @@ Five independent optimization strategies — F1, Youden Index, Balanced Accuracy
 
 <br/>
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 ids---System/
@@ -254,7 +254,7 @@ Pairing this IDS with rate limiting on `/login` is strongly recommended — it r
 
 <br/>
 
-## 🍓 Raspberry Pi 5 Deployment
+##  Raspberry Pi 5 Deployment
 
 Runs comfortably as a dedicated inline network sensor on Raspberry Pi 5.
 
@@ -273,7 +273,7 @@ Full systemd service setup and autostart guide → [`RASPBERRY_PI_5_DEPLOYMENT_G
 
 <br/>
 
-## 🗺 Roadmap
+##  Roadmap
 
 | | |
 |:---:|:---|
