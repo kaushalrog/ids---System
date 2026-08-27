@@ -296,6 +296,10 @@ Full systemd service setup and autostart guide → [`RASPBERRY_PI_5_DEPLOYMENT_G
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1e1b4b,100:6d28d9&height=140&section=footer&text=Zero%20Missed%20Attacks&fontSize=24&fontColor=c4b5fd&fontAlignY=65" width="100%"/>
 
-*Built by [kaushalrog](https://github.com/kaushalrog)*
+### Built by [Kaushal Rog](https://github.com/kaushalrog)
+
+**Contributed by [Rishitha Chappidi](https://github.com/Rishithachappidi)**
+
+*Contributions: README documentation, detection-pipeline visualization, system workflow clarification, and results documentation.*
 
 </div>
